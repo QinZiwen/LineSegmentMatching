@@ -6,8 +6,9 @@ extern "C"
 
 
 #include <stdio.h>
-#include <highgui.h>
-#include <cv.h>
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc.hpp>
 #include <math.h>
 #include <iostream>
 #include "IO.h"

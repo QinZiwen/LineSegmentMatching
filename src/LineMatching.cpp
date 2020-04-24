@@ -177,7 +177,7 @@ CLineMatching::CLineMatching(Mat img1,  Mat line1, Mat tnode1, Mat img2,  Mat li
 	fanMatch2LineMatch(vstrFanMatch, vstrLineMatch);
 		
 	uniqueLineMatch(vstrLineMatch,  vtmp);
-	if (isVerbose) plotLineMatches(colorImg1.clone(), colorImg2.clone(), vstrLineMatch, "Line matches filtered by epipolar line constraint");
+	if (isVerbose) plotLineMatches(colorImg1.clone(), colorImg2.clone(), vstrLineMatch, "Line_matches_filtered_by_epipolar_line_constraint");
 	cout<<"LJL matches filtered by epipolar line constraint: " << vstrFanMatch.size()<<endl;
 	cout<<"Line matches filtered by epipolar line constraint: " << vstrLineMatch.size()<<endl;	
 	float desDistThr = desDistThrProg;
@@ -234,7 +234,7 @@ CLineMatching::CLineMatching(Mat img1,  Mat line1, Mat tnode1, Mat img2,  Mat li
 	}
 	
 	if (isVerbose) plotPointMatches(colorImg1.clone(), colorImg2.clone(), vstrPointMatch, "Point matches after propagation");
-	if (isVerbose) plotLineMatches(colorImg1.clone(), colorImg2.clone(), vstrLineMatch, "Line matches after propagation");
+	if (isVerbose) plotLineMatches(colorImg1.clone(), colorImg2.clone(), vstrLineMatch, "Line_matches_after_propagation");
 
 	preNum = 0;
 	curNum = 0;	
@@ -277,7 +277,7 @@ CLineMatching::CLineMatching(Mat img1,  Mat line1, Mat tnode1, Mat img2,  Mat li
 	if (isVerbose) plotPointMatches(colorImg1.clone(), colorImg2.clone(), vstrPointMatch, "Final point matches");
 	if (isVerbose)
 	{ 
-		plotLineMatches(colorImg1.clone(), colorImg2.clone(), vstrLineMatch, "Final line matches");	
+		plotLineMatches(colorImg1.clone(), colorImg2.clone(), vstrLineMatch, "Final_line_matches");	
 		waitKey();
 	}
 	// 
@@ -291,7 +291,7 @@ void CLineMatching::descriptorEvaluationUniquePtMatches()
 void CLineMatching::lineMatches2Mat(Mat &mline)
 {
 	string fileName = _outFileName;
-	ofstream outFile(fileName.c_str(), ios_base::out);  //°´ÐÂ½¨»ò¸²¸Ç·½Ê½Ð´Èë  	
+	ofstream outFile(fileName.c_str(), ios_base::out);  //ï¿½ï¿½ï¿½Â½ï¿½ï¿½ò¸²¸Ç·ï¿½Ê½Ð´ï¿½ï¿½  	
 
 	vector<int> vser;
 	int nmatch = vstrLineMatch.size();	
@@ -305,7 +305,7 @@ void CLineMatching::lineMatches2Mat(Mat &mline)
 			strline2[ser2].pe.x, strline2[ser2].pe.y);
 		mline.push_back(tmat);
 		vser.push_back(ser1);
-		//	outFile<< ser1 << ' ' << ser2 <<endl;   //Ã¿ÁÐÊý¾ÝÓÃ tab ¸ô¿ª  			
+		//	outFile<< ser1 << ' ' << ser2 <<endl;   //Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ tab ï¿½ï¿½ï¿½ï¿½  			
 	}		
 	vector<int> vsidex;
 	sortIdx(vser, vsidex, SORT_EVERY_ROW);
@@ -315,7 +315,7 @@ void CLineMatching::lineMatches2Mat(Mat &mline)
 		int ser = vsidex.at(i);
 		int ser1 = vstrLineMatch[ser].serLine1;		
 		int ser2 = vstrLineMatch[ser].serLine2;		
-		outFile<< ser1 << ' ' << ser2 <<endl;   //Ã¿ÁÐÊý¾ÝÓÃ tab ¸ô¿ª  			
+		outFile<< ser1 << ' ' << ser2 <<endl;   //Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ tab ï¿½ï¿½ï¿½ï¿½  			
 	}
 }
 
@@ -2572,7 +2572,7 @@ void CLineMatching::plotLineMatches(Mat img1, Mat img2, vector<strLineMatch> vSt
 
 	imshow(imgName, combinedImg);
 	waitKey(20);
-//	imwrite(imgName, combinedImg);	
+	imwrite(imgName+".png", combinedImg);	
 }
 
 void CLineMatching::description(Mat pts, const Mat gMag, const Mat gDir, Mat &descriptors)
